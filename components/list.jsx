@@ -1,5 +1,6 @@
 var React = require('react');
 var TodoForm = require('./form.jsx');
+var TodoItem = require('./item.jsx');
 
 var List = React.createClass({
   render: function () {
