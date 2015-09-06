@@ -19,3 +19,5 @@ var TodoForm = React.createClass({
     );
   }
 });
+
+module.exports = TodoForm;
