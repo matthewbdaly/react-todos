@@ -55,10 +55,12 @@ gulp.task('coveralls', function () {
     .pipe(coveralls());
 });
 
-gulp.task('default', function () {
+gulp.task('react', function () {
   return browserify({ entries: ['components/index.jsx'], debug: true })
     .transform(reactify)
     .bundle()
     .pipe(source('index.js'))
     .pipe(gulp.dest('static/jsx/'));
 });
+
+gulp.task('default', ['compass', 'react']);
