@@ -2,6 +2,6 @@ var React = require('react');
 var List = require('./list.jsx');
 
 React.render(
-  <List />,
+  <List url="todos.json" />,
   document.getElementById('view')
 );
