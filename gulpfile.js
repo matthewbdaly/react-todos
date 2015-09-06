@@ -50,5 +50,5 @@ gulp.task('default', function () {
     .transform(reactify)
     .bundle()
     .pipe(source('index.js'))
-    .pipe(gulp.dest('public/jsx/'));
+    .pipe(gulp.dest('static/jsx/'));
 });
