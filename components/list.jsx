@@ -6,6 +6,7 @@ var List = React.createClass({
     return (
       <div>
         <h1>React Todo</h1>
+        <TodoForm />
         <ul className="todos">
         </ul>
       </div>
