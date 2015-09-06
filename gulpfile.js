@@ -6,15 +6,25 @@ var reactify = require('reactify');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var coveralls = require('gulp-coveralls');
+var compass = require('gulp-compass');
 
 gulp.task('lint', function () {
   return gulp.src([
       'index.js',
-      'componensts/*.js'
+      'components/*.js'
       ])
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
+
+gulp.task('compass', function() {
+  gulp.src('src/sass/*.scss')
+    .pipe(compass({
+      css: 'static/css',
+      sass: 'src/sass'
+    }))
+    .pipe(gulp.dest('static/css'));
+});;
 
 gulp.task('test', function () {
   gulp.src('index.js')
