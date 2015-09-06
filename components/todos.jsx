@@ -1,9 +1,9 @@
 var React = require('react');
-var TodoForm = require('./form.jsx');
-var TodoItem = require('./item.jsx');
 var $ = require('jquery');
+var TodoForm = require('./form.jsx');
+var TodoList = require('./todolist.jsx');
 
-var List = React.createClass({
+var Todos = React.createClass({
   loadTodosFromServer: function () {
     $.ajax({
       url: this.props.url,
@@ -28,11 +28,10 @@ var List = React.createClass({
       <div>
         <h1>React Todo</h1>
         <TodoForm />
-        <ul className="todos">
-        </ul>
+        <TodoList />
       </div>
     );
   }
 });
 
-module.exports = List;
+module.exports = Todos;

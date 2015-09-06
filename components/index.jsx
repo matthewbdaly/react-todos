@@ -1,7 +1,7 @@
 var React = require('react');
-var List = require('./list.jsx');
+var Todos = require('./todos.jsx');
 
 React.render(
-  <List url="todos.json" />,
+  <Todos url="todos.json" />,
   document.getElementById('view')
 );
