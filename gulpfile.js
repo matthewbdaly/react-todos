@@ -13,9 +13,9 @@ gulp.task('lint', function () {
 });
 
 gulp.task('default', function () {
-  return browserify({ entries: ['components/index.jsx'], debug: true })
+  return browserify({ entries: ['components/list.jsx'], debug: true })
     .transform(reactify)
     .bundle()
-    .pipe(source('index.js'))
+    .pipe(source('list.js'))
     .pipe(gulp.dest('public/jsx/'));
 });
