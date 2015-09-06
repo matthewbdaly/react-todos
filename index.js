@@ -2,7 +2,7 @@
 'use strict';
 
 // Declare variables used
-var app, base_url, express, hbs, morgan, port;
+var app, base_url, express, hbs, mongoose, morgan, port, uristring;
 
 // Define values
 express = require('express');
@@ -11,6 +11,20 @@ port = process.env.PORT || 5000;
 base_url = process.env.BASE_URL || 'http://localhost:5000';
 hbs = require('hbs');
 morgan = require('morgan');
+mongoose = require('mongoose');
+uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/react-todos';
+
+// Connect to the database
+mongoose.connect(uristring);
+
+// Create a model for the todos
+var TodoSchema = mongoose.Schema({
+  text: {
+    type: String,
+    match: /^(\w+)/
+  }
+});
+var Todo = mongoose.model('Todo', TodoSchema);
 
 // Set up templating
 app.set('views', __dirname + '/views');
@@ -29,6 +43,17 @@ app.use(express.static(__dirname + '/static'));
 // Define index route
 app.get('/', function (req, res) {
   res.render('index');
+});
+
+// Define todos route
+app.get('/todos', function (req, res) {
+  Todo.find(function (err, todos) {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      res.json(todos);
+    }
+  });
 });
 
 // Listen
