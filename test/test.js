@@ -44,4 +44,16 @@ describe('server', function () {
             });
         });
     });
+
+    // Test adding a new todo
+    describe('Test adding a new todo', function () {
+      it('should return a 201', function (done) {
+        request.post({ url: 'http//localhost:5000/todo',
+          form:{text: 'Buy milk'}},
+          function (error, response, body) {
+            expect(response.statusCode).to.equal(201);
+          }
+        );
+      });
+    });
 });
