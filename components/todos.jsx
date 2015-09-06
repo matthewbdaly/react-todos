@@ -28,7 +28,7 @@ var Todos = React.createClass({
       <div>
         <h1>React Todo</h1>
         <TodoForm />
-        <TodoList />
+        <TodoList data={this.state.data} />
       </div>
     );
   }
