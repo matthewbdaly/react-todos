@@ -48,9 +48,11 @@ describe('server', function () {
     // Test adding a new todo
     describe('Test adding a new todo', function () {
       it('should return a 201', function (done) {
-        request.post({ url: 'http//localhost:5000/todo',
-          form:{text: 'Buy milk'}},
+        request.post({ url: 'http//localhost:5000/todos',
+          form:{text: 'Buy milk'},
+          followRedirect: false},
           function (error, response, body) {
+            console.log(response);
             expect(response.statusCode).to.equal(201);
           }
         );
