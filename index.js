@@ -1,8 +1,10 @@
 /*jslint node: true */
 'use strict';
 
+require('babel/register');
+
 // Declare variables used
-var app, base_url, bodyParser, express, hbs, mongoose, morgan, port, uristring;
+var app, base_url, bodyParser, express, hbs, mongoose, morgan, port, React, Todos, uristring;
 
 // Define values
 express = require('express');
@@ -14,6 +16,8 @@ hbs = require('hbs');
 morgan = require('morgan');
 mongoose = require('mongoose');
 uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/react-todos';
+React = require('react');
+Todos = React.createFactory(require('./components/todos.jsx'));
 
 // Connect to the database
 mongoose.connect(uristring);
@@ -49,7 +53,14 @@ app.use(express.static(__dirname + '/static'));
 
 // Define index route
 app.get('/', function (req, res) {
-  res.render('index');
+  Todo.find(function (err, todos) {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      var markup = React.renderToString(Todos({ data: todos }));
+      res.render('index', { markup: markup });
+    }
+  });
 });
 
 // Define todos route
