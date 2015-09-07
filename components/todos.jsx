@@ -36,10 +36,7 @@ var Todos = React.createClass({
     });
   },
   getInitialState: function() {
-    return {data: []};
-  },
-  componentDidMount: function() {
-    this.loadTodosFromServer();
+    return {data: this.props.data};
   },
   render: function () {
     return (
