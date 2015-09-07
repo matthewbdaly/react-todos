@@ -8,6 +8,10 @@ var istanbul = require('gulp-istanbul');
 var coveralls = require('gulp-coveralls');
 var compass = require('gulp-compass');
 
+var paths = {
+    scripts: ['components/*.jsx'],
+    styles: ['src/sass/*.scss']
+};
 gulp.task('lint', function () {
   return gulp.src([
       'index.js',
@@ -63,4 +67,7 @@ gulp.task('react', function () {
     .pipe(gulp.dest('static/jsx/'));
 });
 
-gulp.task('default', ['compass', 'react']);
+gulp.task('default', function () {
+  gulp.watch(paths.scripts, ['react']);
+  gulp.watch(paths.styles, ['compass']);
+});
