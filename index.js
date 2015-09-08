@@ -58,7 +58,10 @@ app.get('/', function (req, res) {
       console.log('Error: ' + err);
     } else {
       var markup = React.renderToString(Todos({ data: todos }));
-      res.render('index', { markup: markup });
+      res.render('index', {
+        markup: markup,
+        state: JSON.stringify(todos)
+      });
     }
   });
 });
