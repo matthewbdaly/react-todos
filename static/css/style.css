@@ -87,6 +87,12 @@ div#view ul.todos {
 div#view ul.todos li {
   width: 100%;
   border: 1px solid gray;
+  border-radius: 3px;
+  background-color: #efefef;
   margin-bottom: 5px;
   padding: 5px;
+}
+div#view ul.todos li a.delete {
+  float: right;
+  padding-right: 5px;
 }

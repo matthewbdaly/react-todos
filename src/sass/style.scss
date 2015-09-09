@@ -37,8 +37,15 @@ div#view {
         li {
             width: 100%;
             border: 1px solid gray;
+            border-radius: 3px;
+            background-color: #efefef;
             margin-bottom: 5px;
             padding: 5px;
+
+            a.delete {
+                float: right;
+                padding-right: 5px;
+            }
         }
     }
 }
