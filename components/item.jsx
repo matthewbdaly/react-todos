@@ -3,9 +3,7 @@ var React = require('react');
 var TodoItem = React.createClass({
   render: function () {
     return (
-      <li>
-        {this.props.text}
-      </li>
+      <li data-itemid={this.props.id}>{this.props.text}<a className="delete">X</a></li>
     );
   }
 });
