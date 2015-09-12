@@ -1,0 +1,10 @@
+{
+  "name": "React Todo",
+  "description": "A simple isomorphic todo list built with React",
+  "repository": "https://github.com/matthewbdaly/react-todos",
+  "keywords": ["node", "express", "react", "javascript", "isomorphic"],
+  "success_ur;": "/",
+  "addons": [
+    "mongolab"
+  ]
+}
