@@ -99,6 +99,27 @@ app.post('/todos', function (req, res) {
   });
 });
 
+// Delete an existing todo
+app.delete('/todos/:id', function (req, res) {
+  // Get ID
+  var id = req.params.id;
+
+  // Delete that todo
+  Todo.remove({ _id: id }, function (err) {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      Todo.find(function (err, todos) {
+        if (err) {
+          console.log('Error: ' + err);
+        } else {
+          res.status(204).json(todos);
+        }
+      });
+    }
+  });
+});
+
 // Listen
 app.listen(port);
 console.log("Listening on port " + port);
