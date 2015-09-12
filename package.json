@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test && gulp coveralls"
   },
   "author": "Matthew Daly <matthewbdaly@gmail.com> (http://matthewdaly.co.uk/)",
   "license": "ISC",
