@@ -22,7 +22,7 @@ var Todos = React.createClass({
       });
     });
   },
-  getInitialState: function() {
+  getInitialState: function () {
     return {data: this.props.data};
   },
   render: function () {

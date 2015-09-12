@@ -1,7 +1,7 @@
 var React = require('react');
 
 var TodoForm = React.createClass({
-  handleSubmit: function(e) {
+  handleSubmit: function (e) {
     e.preventDefault();
     var text = React.findDOMNode(this.refs.text).value.trim();
     if (!text) {
