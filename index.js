@@ -113,7 +113,7 @@ app.delete('/todos/:id', function (req, res) {
         if (err) {
           console.log('Error: ' + err);
         } else {
-          res.status(204).json(todos);
+          res.status(200).json(todos);
         }
       });
     }

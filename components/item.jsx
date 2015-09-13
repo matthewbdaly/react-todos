@@ -4,7 +4,10 @@ var TodoItem = React.createClass({
   handleDelete: function (e) {
     e.preventDefault();
     var id = this.props.id;
-    console.log(id);
+    if (!id) {
+      return;
+    }
+    this.props.onTodoDelete({ id: id });
   },
   render: function () {
     return (
