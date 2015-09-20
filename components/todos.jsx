@@ -11,13 +11,13 @@ var Todos = React.createClass({
     todos = _.filter(todos, function (obj) {
       return obj._id !== item.id;
     });
-    this.setState({data: todos}, function () {
+    this.setProps({data: todos}, function () {
       $.ajax({
         url: this.props.url + '/' + item.id,
         dataType: 'json',
         type: 'DELETE',
         success: function (data) {
-          this.setState({data: data});
+          this.setProps({data: data});
         }.bind(this),
         error: function(xhr, status, err) {
           console.error(this.props.url, status, err.toString());
@@ -26,16 +26,16 @@ var Todos = React.createClass({
     });
   },
   handleTodoSubmit: function (todo) {
-    var todos = this.state.data;
+    var todos = this.props.data;
     todos.push(todo);
-    this.setState({data: todos}, function () {
+    this.setProps({data: todos}, function () {
       $.ajax({
         url: this.props.url,
         dataType: 'json',
         type: 'POST',
         data: todo,
         success: function (data) {
-          this.setState({data: data});
+          this.setProps({data: data});
         }.bind(this),
         error: function(xhr, status, err) {
           console.error(this.props.url, status, err.toString());
@@ -51,7 +51,7 @@ var Todos = React.createClass({
       <div>
         <h1>React Todo</h1>
         <TodoForm onTodoSubmit={this.handleTodoSubmit} />
-        <TodoList onTodoDeleteParent={this.handleTodoDeleteParent} data={this.state.data} />
+        <TodoList onTodoDeleteParent={this.handleTodoDeleteParent} data={this.props.data} />
       </div>
     );
   }
